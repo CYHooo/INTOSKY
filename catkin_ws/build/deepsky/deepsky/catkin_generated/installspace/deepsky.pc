@@ -1,0 +1,8 @@
+prefix=/home/orangepi/catkin_ws/install
+
+Name: deepsky
+Description: Description of deepsky
+Version: 1.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -ldeepsky
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/orangepi/catkin_ws/devel
+
+Name: roswww_static
+Description: Description of roswww_static
+Version: 0.24.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

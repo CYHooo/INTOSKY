@@ -1,0 +1,41 @@
+<launch>
+    <arg name="ws281x" default="true"/>
+    <arg name="led_effect" default="true"/>
+    <arg name="led_notify" default="true"/>
+    <arg name="led_count" default="9"/>
+
+
+    <arg name="simulator" default="false"/>
+
+
+        <!-- LED Controller Node -->
+    <node pkg="ws281x" type="ws281x_node" name="led"  clear_params="true" output="screen">
+        <!-- 시리얼 포트 파라미터 -->
+        <param name="serial_port" value="/dev/ttyS3" />
+        <param name="baud_rate" value="921600" />
+        <param name="led_count" value="$(arg led_count)"/>
+
+    </node>
+
+
+    <!-- high level led effects control, events notification with leds -->
+    <node pkg="deepsky" name="led_effect" type="led" clear_params="true" output="screen" if="$(arg led_effect)">
+        <param name="led" value="led"/>
+        <param name="blink_rate" value="2"/>
+        <param name="fade_period" value="0.5"/>
+        <param name="rainbow_period" value="5"/>
+        <!-- events effects table -->
+        <rosparam param="notify" if="$(arg led_notify)">
+            startup: { r: 255, g: 255, b: 255 }
+            connected: { effect: rainbow }
+            disconnected: { effect: blink, r: 255, g: 50, b: 50 }
+            acro: { r: 245, g: 155, b: 0 }
+            stabilized: { r: 30, g: 180, b: 50 }
+            altctl: { r: 255, g: 255, b: 40 }
+            posctl: { r: 50, g: 100, b: 220 }
+            offboard: { r: 220, g: 20, b: 250 }
+            low_battery: { threshold: 3.6, effect: blink_fast, r: 255, g: 0, b: 0 }
+            error: { effect: flash, r: 255, g: 0, b: 0, ignore: [ "[lpe] vision position timeout" ]}
+        </rosparam>
+    </node>
+</launch>

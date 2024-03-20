@@ -1,0 +1,7 @@
+set(deepsky_SETUP_PY_SETUP_MODULE "distutils.core")
+set(deepsky_SETUP_PY_VERSION "1.0.0")
+set(deepsky_SETUP_PY_SCRIPTS "")
+set(deepsky_SETUP_PY_PACKAGES "deepsky")
+set(deepsky_SETUP_PY_PACKAGE_DIRS "src/deepsky")
+set(deepsky_SETUP_PY_MODULES "")
+set(deepsky_SETUP_PY_MODULE_DIRS "")

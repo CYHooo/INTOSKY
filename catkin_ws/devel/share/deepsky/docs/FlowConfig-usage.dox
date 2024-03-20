@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="deepsky" pkg="deepsky" type="deepsky">
+  <param name="enabled" type="bool" value="True" />
+</node>
+\endverbatim
+
